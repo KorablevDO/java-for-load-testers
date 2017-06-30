@@ -1,185 +1,142 @@
 package com.acme.edu;
 
 /**
- * Created by do.korablev on 26.06.2017.
+ * Tests
  */
 
 public class TestCalculator {
     public static void main(String[] args) {
-        summa();
-        subtraction();
-        setMemoryAndMemoryAndGetMemory();
-        multiplication();
-        division();
-        memoryPlus();
-        memoryMinus();
-        module();
+        addition(4,4);
+        addition(2.2, 2.2);
+        subtraction(4,2);
+        subtraction(4.4,2.2);
+        saveMemory(5);
+        saveMemory(5.5);
+        multiplication(2, 2);
+        multiplication(2.2 ,2.2);
+        multiplication(2.2 ,0);
+        division(4, 2);
+        division(4.4, 2);
+        division(4.4, 0);
+        memoryPlus(1, 3);
+        memoryPlus(1.1, 3.1);
+        memoryMinus(3, 1);
+        memoryMinus(3.1, 1.2);
+        module(-5);
+        checkLimit(6,6);
     }
 
-    private static void summa(){
-        int a = 4;
-        int b = 4;
-        double c = 3.2;
-        double d = 1.9;
+    private static void addition(int firstNumber, int secondNumber){
+        System.out.println(firstNumber + " + " +  secondNumber + " = " + Сalculator.addition(firstNumber, secondNumber));
 
-        int result1 = Сalculator.summa(a, b);
-        double result2 = Сalculator.summa(d, c);
-
-        if((result1 > a) && (result1 > b)){
-            System.out.println("summa pass " + result1);
-        }else{
-            System.out.println("summa Fail " + result1);
-        }
-
-        if((result2 > c) && (result2 > d)){
-            System.out.println("summa pass " + result2);
-        }else{
-            System.out.println("summa Fail " + result2);
-        }
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
     }
 
-    private static void subtraction(){
-        int a = 4;
-        int b = 4;
-        double c = 3.2;
-        double d = 1.9;
+    private static void addition(double firstNumber, double secondNumber){
+        System.out.println(firstNumber + " + " +  secondNumber + " = " + Сalculator.addition(firstNumber, secondNumber));
 
-        int result1 = Сalculator.subtraction(a, b);
-        double result2 = Сalculator.subtraction(d, c);
-
-        if((result1 < a) && (result1 < b)){
-            System.out.println("subtraction pass " + result1);
-        }else{
-            System.out.println("subtraction Fail " + result1);
-        }
-
-        if((result2 < c) && (result2 < d)){
-            System.out.println("subtraction pass " + result2);
-        }else{
-            System.out.println("subtraction Fail " + result2);
-        }
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
     }
 
-    private static void setMemoryAndMemoryAndGetMemory(){
-        int a = 6;
-        double b = 3.3;
+    private static void subtraction(int firstNumber, int secondNumber){
+        System.out.println(firstNumber + " - " +  secondNumber + " = " + Сalculator.subtraction(firstNumber, secondNumber));
 
-        Сalculator.setMemory(a);
-        Сalculator.memory();
-        System.out.println(a + " -> " + Сalculator.getMemory());
-
-        Сalculator.setMemory(b);
-        Сalculator.memory();
-        System.out.println(b + " -> " + Сalculator.getMemory());
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
     }
 
-    private static void multiplication(){
-        int a = 2;
-        int b = 2;
-        double c = 3.2;
-        double d = 1.9;
+    private static void subtraction(double firstNumber, double secondNumber){
+        System.out.println(firstNumber + " - " +  secondNumber + " = " + Сalculator.subtraction(firstNumber, secondNumber));
 
-        int result1 = Сalculator.multiplication(a, b);
-        double result2 = Сalculator.multiplication(d, c);
-
-        if((result1 > a) && (result1 > b)){
-            System.out.println("multiplication pass " + result1);
-        }else{
-            System.out.println("multiplication Fail " + result1);
-        }
-
-        if((result2 > c) && (result2 > d)){
-            System.out.println("multiplication pass " + result2);
-        }else{
-            System.out.println("multiplication Fail " + result2);
-        }
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
     }
 
-    private static void division(){
-        int a = 8;
-        int b = 4;
-        double c = 4.2;
-        double d = 1.9;
+    private static void saveMemory(double number){
+        Сalculator.setInMemory(number);
+        Сalculator.saveInMemory();
+        System.out.println("Set"+ number + " SaveInMerory " + Сalculator.getStoredMemory());
 
-        int result1 = Сalculator.division(a, b);
-        double result2 = Сalculator.division(d, c);
-
-        if((result1 < a) && (result1 < b)){
-            System.out.println("division pass " + result1);
-        }else{
-            System.out.println("division Fail " + result1);
-        }
-
-        if((result2 < c) && (result2 < d)){
-            System.out.println("division pass " + result2);
-        }else{
-            System.out.println("division Fail " + result2);
-        }
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
     }
 
-    private static void memoryPlus(){
-        int a = 2;
-        int b = 1;
-        double c = 3.3;
-        double d = 2.2;
+    private static void multiplication(int firstNumber, int secondNumber){
+        System.out.println(firstNumber + " * " +  secondNumber + " = " + Сalculator.multiplication(firstNumber, secondNumber));
 
-        Сalculator.setMemory(a);
-        Сalculator.memory();
-        System.out.println("memoryPlus " + a + "+" + Сalculator.summa(a, b) + " = " + Сalculator.getMemoryPlus());
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
-
-        Сalculator.setMemory(b);
-        Сalculator.memory();
-        Сalculator.summa(c, d);
-        System.out.println("memoryPlus " + b + "+" + Сalculator.summa(c, b) + " = " + Сalculator.getMemoryPlus());
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
     }
 
-    private static void memoryMinus() {
-        int a = 8;
-        int b = 2;
-        double c = 8.3;
-        double d = 2.2;
+    private static void multiplication(double firstNumber, double secondNumber){
+        System.out.println(firstNumber + " * " +  secondNumber + " = " + Сalculator.multiplication(firstNumber, secondNumber));
 
-        Сalculator.setMemory(a);
-        Сalculator.memory();
-        System.out.println("memoryMinus " + a + "-" + Сalculator.subtraction(a, b) + " = " + Сalculator.getMemoryMinus());
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
-
-        Сalculator.setMemory(c);
-        Сalculator.memory();
-        Сalculator.summa(c, d);
-        System.out.println("memoryMinus " + b + "-" + Сalculator.subtraction(c, b) + " = " + Сalculator.getMemoryMinus());
-
-        Сalculator.setMemory(0);
-        Сalculator.memory();
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
     }
 
-    public static void module() {
-        int a = -5;
-        double b = -2.1;
-        System.out.println("module " + a + " -> " + Сalculator.module(a));
-        System.out.println("module " + b + " -> " + Сalculator.module(b));
+    private static void division(int firstNumber, int secondNumber){
+        System.out.println(firstNumber + " / " +  secondNumber + " = " + Сalculator.division(firstNumber, secondNumber));
+
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
     }
+
+    private static void division(double firstNumber, double secondNumber){
+        System.out.println(firstNumber + " / " +  secondNumber + " = " + Сalculator.division(firstNumber, secondNumber));
+
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
+    }
+
+    private static void memoryPlus(int firstNumber, int secondNumber){
+        Сalculator.setInMemory(firstNumber);
+        Сalculator.saveInMemory();
+        System.out.println("memoryPlus " + firstNumber + "+" + Сalculator.addition(firstNumber, secondNumber) + " = " +
+                Сalculator.getAmountMemoryAndLastOperation());
+
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
+    }
+
+    private static void memoryPlus(double firstNumber, double secondNumber) {
+        Сalculator.setInMemory(firstNumber);
+        Сalculator.saveInMemory();
+        System.out.println("memoryPlus " + firstNumber + "+" + Сalculator.addition(firstNumber, secondNumber) + " = " +
+                Сalculator.getAmountMemoryAndLastOperation());
+
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
+    }
+
+    private static void memoryMinus(int firstNumber, int secondNumber) {
+        Сalculator.setInMemory(firstNumber);
+        Сalculator.saveInMemory();
+        System.out.println("memoryMinus " + firstNumber + "-" + Сalculator.subtraction(firstNumber, secondNumber) + " = " +
+                Сalculator.getDifferenceMemoryAndOperation());
+
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
+    }
+
+    private static void memoryMinus(double firstNumber, double secondNumber){
+        Сalculator.setInMemory(firstNumber);
+        Сalculator.saveInMemory();
+        System.out.println("memoryMinus " + firstNumber + "-" + Сalculator.subtraction(firstNumber, secondNumber) + " = " +
+                Сalculator.getDifferenceMemoryAndOperation());
+
+        Сalculator.setInMemory(0);
+        Сalculator.saveInMemory();
+    }
+
+    private static void module(double number) {
+        System.out.println("module " + number + " -> " + Сalculator.moduleNumber(number));
+    }
+
+    private static void checkLimit(double firstNumber, double secondNumber){
+        System.out.println("Limit 10  вызов суммы " + firstNumber + " + " + secondNumber + "-> " + Сalculator.addition(firstNumber, secondNumber));
+    }
+
 }
