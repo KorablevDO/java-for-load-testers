@@ -49,6 +49,8 @@ public class App {
                     break;
                 case "div" : result(division(messages[1], messages[2]));
                     break;
+                default:
+                    System.out.println("Команда " + message + " не распознана");
             }
         }
     }
