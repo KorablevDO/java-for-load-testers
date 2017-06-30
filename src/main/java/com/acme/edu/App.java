@@ -11,6 +11,7 @@ import com.acme.edu.Сalculator;
 public class App {
     public static void main( String[] args ) {
     calculator(args);
+    getLog();
     }
 
     private static void calculator(String[] arr){
@@ -36,22 +37,31 @@ public class App {
     }
 
     private static boolean checkString(String string) {
-        if (string == null) return false;
-        return string.matches("^-?\\d+$");
+        try{
+            Double.parseDouble(string);
+            return true;
+        }catch (Exception e)
+        {
+            return  false;
+        }
     }
 
     private static void setAct(String[] messages){
         if(messages != null) {
+            String strLog;
             for (String message : messages) {
                 switch (message) {
                     case "add":
-                        result(addition(messages[1], messages[2]));
+                        strLog = result(addition(messages[1], messages[2]));
+                        log(message,messages[1],messages[2],strLog);
                         break;
                     case "sub":
-                        result(subtraction(messages[1], messages[2]));
+                        strLog = result(subtraction(messages[1], messages[2]));
+                        log(message,messages[1],messages[2],strLog);
                         break;
                     case "div":
-                        result(division(messages[1], messages[2]));
+                        strLog = result(division(messages[1], messages[2]));
+                        log(message,messages[1],messages[2],strLog);
                         break;
                 }
             }
@@ -70,8 +80,30 @@ public class App {
         return Сalculator.division(Double.parseDouble(messageFerst),Double.parseDouble(messageSecond));
     }
 
-    private static void result(double number){
+    private static String result(double number){
         System.out.println(number);
+        return Double.toString(number);
     }
 
+    private static String[] arrLog = new String[0];
+
+    private static void log(String command, String messageFerst,String messageSecond, String result){
+        int length = arrLog.length;
+        String[] temporaryArrLog = addArr(new String[length+1]);
+        temporaryArrLog[temporaryArrLog.length -1]= messageFerst + " " + command + " " + messageSecond + " = " + result;
+        arrLog = temporaryArrLog;
+    }
+
+    private static String[] addArr(String[] arr){
+        for(int i = 0; i < (arr.length -1);i++){
+            arr[i]=arrLog[i];
+        }
+        return arr;
+    }
+
+    private static void getLog(){
+        for (String message:arrLog) {
+            System.out.println(message);
+        }
+    }
 }
