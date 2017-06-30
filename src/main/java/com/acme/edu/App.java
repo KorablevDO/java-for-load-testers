@@ -41,16 +41,19 @@ public class App {
     }
 
     private static void setAct(String[] messages){
-        for (String message:messages) {
-            switch (message){
-                case "add" : result(addition(messages[1], messages[2]));
-                    break;
-                case "sub" : result(subtraction(messages[1], messages[2]));
-                    break;
-                case "div" : result(division(messages[1], messages[2]));
-                    break;
-                default:
-                    System.out.println("Команда " + message + " не распознана");
+        if(messages != null) {
+            for (String message : messages) {
+                switch (message) {
+                    case "add":
+                        result(addition(messages[1], messages[2]));
+                        break;
+                    case "sub":
+                        result(subtraction(messages[1], messages[2]));
+                        break;
+                    case "div":
+                        result(division(messages[1], messages[2]));
+                        break;
+                }
             }
         }
     }
