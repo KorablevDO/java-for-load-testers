@@ -1,142 +1,138 @@
 package com.acme.edu;
 
+import com.acme.edu.Calculator.Calculator;
+import com.acme.edu.Calculator.LaunchCalculator;
+
 /**
  * Tests
  */
 
 public class TestCalculator {
     public static void main(String[] args) {
-        addition(4,4);
-        addition(2.2, 2.2);
-        subtraction(4,2);
-        subtraction(4.4,2.2);
-        saveMemory(5);
-        saveMemory(5.5);
-        multiplication(2, 2);
-        multiplication(2.2 ,2.2);
-        multiplication(2.2 ,0);
-        division(4, 2);
-        division(4.4, 2);
-        division(4.4, 0);
-        memoryPlus(1, 3);
-        memoryPlus(1.1, 3.1);
-        memoryMinus(3, 1);
-        memoryMinus(3.1, 1.2);
-        module(-5);
-        checkLimit(6,6);
+        LaunchCalculator run1 = new LaunchCalculator();
+        LaunchCalculator run2 = new LaunchCalculator();
+        String[] case1 = {"add" ,"1", "1", "div", "8", "4"};
+        String[] case2 ={"1", "1", "sub", "9", "5", "add", "8", "8"};
+        run1.computing(case1);
+        run1.getLog();
+        System.out.println("----------------");
+        run2.computing(case2);
+        run2.getLog();
     }
 
-    private static void addition(int firstNumber, int secondNumber){
-        System.out.println(firstNumber + " + " +  secondNumber + " = " + Сalculator.addition(firstNumber, secondNumber));
+    private static Calculator log = new Calculator();
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+    private static void addition(int firstNumber, int secondNumber){
+        System.out.println(firstNumber + " + " +  secondNumber + " = " + log.addition(firstNumber, secondNumber));
+
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void addition(double firstNumber, double secondNumber){
-        System.out.println(firstNumber + " + " +  secondNumber + " = " + Сalculator.addition(firstNumber, secondNumber));
+        System.out.println(firstNumber + " + " +  secondNumber + " = " + log.addition(firstNumber, secondNumber));
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void subtraction(int firstNumber, int secondNumber){
-        System.out.println(firstNumber + " - " +  secondNumber + " = " + Сalculator.subtraction(firstNumber, secondNumber));
+        System.out.println(firstNumber + " - " +  secondNumber + " = " + log.subtraction(firstNumber, secondNumber));
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void subtraction(double firstNumber, double secondNumber){
-        System.out.println(firstNumber + " - " +  secondNumber + " = " + Сalculator.subtraction(firstNumber, secondNumber));
+        System.out.println(firstNumber + " - " +  secondNumber + " = " + log.subtraction(firstNumber, secondNumber));
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void saveMemory(double number){
-        Сalculator.setInMemory(number);
-        Сalculator.saveInMemory();
-        System.out.println("Set"+ number + " SaveInMerory " + Сalculator.getStoredMemory());
+        log.setInMemory(number);
+        log.saveInMemory();
+        System.out.println("Set"+ number + " SaveInMerory " + log.getStoredMemory());
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void multiplication(int firstNumber, int secondNumber){
-        System.out.println(firstNumber + " * " +  secondNumber + " = " + Сalculator.multiplication(firstNumber, secondNumber));
+        System.out.println(firstNumber + " * " +  secondNumber + " = " + log.multiplication(firstNumber, secondNumber));
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void multiplication(double firstNumber, double secondNumber){
-        System.out.println(firstNumber + " * " +  secondNumber + " = " + Сalculator.multiplication(firstNumber, secondNumber));
+        System.out.println(firstNumber + " * " +  secondNumber + " = " + log.multiplication(firstNumber, secondNumber));
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void division(int firstNumber, int secondNumber){
-        System.out.println(firstNumber + " / " +  secondNumber + " = " + Сalculator.division(firstNumber, secondNumber));
+        System.out.println(firstNumber + " / " +  secondNumber + " = " + log.division(firstNumber, secondNumber));
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void division(double firstNumber, double secondNumber){
-        System.out.println(firstNumber + " / " +  secondNumber + " = " + Сalculator.division(firstNumber, secondNumber));
+        System.out.println(firstNumber + " / " +  secondNumber + " = " + log.division(firstNumber, secondNumber));
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void memoryPlus(int firstNumber, int secondNumber){
-        Сalculator.setInMemory(firstNumber);
-        Сalculator.saveInMemory();
-        System.out.println("memoryPlus " + firstNumber + "+" + Сalculator.addition(firstNumber, secondNumber) + " = " +
-                Сalculator.getAmountMemoryAndLastOperation());
+        log.setInMemory(firstNumber);
+        log.saveInMemory();
+        System.out.println("memoryPlus " + firstNumber + "+" + log.addition(firstNumber, secondNumber) + " = " +
+                log.getAmountMemoryAndLastOperation());
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void memoryPlus(double firstNumber, double secondNumber) {
-        Сalculator.setInMemory(firstNumber);
-        Сalculator.saveInMemory();
-        System.out.println("memoryPlus " + firstNumber + "+" + Сalculator.addition(firstNumber, secondNumber) + " = " +
-                Сalculator.getAmountMemoryAndLastOperation());
+        log.setInMemory(firstNumber);
+        log.saveInMemory();
+        System.out.println("memoryPlus " + firstNumber + "+" + log.addition(firstNumber, secondNumber) + " = " +
+                log.getAmountMemoryAndLastOperation());
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void memoryMinus(int firstNumber, int secondNumber) {
-        Сalculator.setInMemory(firstNumber);
-        Сalculator.saveInMemory();
-        System.out.println("memoryMinus " + firstNumber + "-" + Сalculator.subtraction(firstNumber, secondNumber) + " = " +
-                Сalculator.getDifferenceMemoryAndOperation());
+        log.setInMemory(firstNumber);
+        log.saveInMemory();
+        System.out.println("memoryMinus " + firstNumber + "-" + log.subtraction(firstNumber, secondNumber) + " = " +
+                log.getDifferenceMemoryAndOperation());
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void memoryMinus(double firstNumber, double secondNumber){
-        Сalculator.setInMemory(firstNumber);
-        Сalculator.saveInMemory();
-        System.out.println("memoryMinus " + firstNumber + "-" + Сalculator.subtraction(firstNumber, secondNumber) + " = " +
-                Сalculator.getDifferenceMemoryAndOperation());
+        log.setInMemory(firstNumber);
+        log.saveInMemory();
+        System.out.println("memoryMinus " + firstNumber + "-" + log.subtraction(firstNumber, secondNumber) + " = " +
+                log.getDifferenceMemoryAndOperation());
 
-        Сalculator.setInMemory(0);
-        Сalculator.saveInMemory();
+        log.setInMemory(0);
+        log.saveInMemory();
     }
 
     private static void module(double number) {
-        System.out.println("module " + number + " -> " + Сalculator.moduleNumber(number));
+        System.out.println("module " + number + " -> " + log.moduleNumber(number));
     }
 
     private static void checkLimit(double firstNumber, double secondNumber){
-        System.out.println("Limit 10  вызов суммы " + firstNumber + " + " + secondNumber + "-> " + Сalculator.addition(firstNumber, secondNumber));
+        System.out.println("Limit 10  вызов суммы " + firstNumber + " + " + secondNumber + "-> " + log.addition(firstNumber, secondNumber));
     }
 
 }

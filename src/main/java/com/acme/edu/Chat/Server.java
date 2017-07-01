@@ -1,9 +1,9 @@
-package com.acme.edu;
+package com.acme.edu.Chat;
 
 /**
- *
+ * Created by do.korablev on 26.06.2017.
  */
-public class Client {
+public class Server {
 
     /**
      *
