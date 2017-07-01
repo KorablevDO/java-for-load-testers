@@ -3,16 +3,14 @@ package com.acme.edu.calculator;
 /**
  *
  */
-public class OperationLog {
-    private StringBuilder bulder = new StringBuilder();
-
+public class StubLogger implements CalculatorLogger{
     public void writeLog(String... messages) {
         for (int i = 0; i < messages.length; i++) {
-            bulder.append(messages[i] + " ");
+            System.out.println(messages[i] + " ");
         }
     }
 
     public String[] getArrLog(){
-        return bulder.toString().split("\n");
+        return new String[0];
     }
 }

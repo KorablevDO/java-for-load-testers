@@ -3,8 +3,16 @@ package com.acme.edu.calculator;
 /**
  *
  */
-public class LaunchCalculator {
-    private OperationLog log = new OperationLog();
+public class LaunchreCalculator {
+    private CalculatorLogger log;
+
+    public LaunchreCalculator(CalculatorLogger typeLogger){
+        log = typeLogger;
+    }
+
+    public LaunchreCalculator(){
+        log = new StringBulderLogger();
+    }
 
     public void computing(String[] condition) {
         String[] exression = null;
@@ -84,7 +92,7 @@ public class LaunchCalculator {
         return Double.toString(number);
     }
 
-    public void getLog() {
+    public void writeLog() {
         for (String message:log.getArrLog()) {
             System.out.println(message);
         }
