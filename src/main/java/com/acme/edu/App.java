@@ -3,107 +3,104 @@
  */
 package com.acme.edu;
 
-import com.acme.edu.Сalculator;
 /**
  * Hello world!
- *
  */
 public class App {
-    public static void main( String[] args ) {
-    calculator(args);
-    getLog();
+    public static void main(String[] args) {
+        computing(args);
+        getLog();
     }
 
-    private static void calculator(String[] arr){
-        String[] act = null;
-        int step=0;
-        int check =0;
-        for (String message:arr){
-            if(!checkString(message)){
-                act = new String[3];
-                act[0] = message;
-            }else{
-                step++;
-                act[step] = message;
-                check++;
+    private static void computing(String[] condition) {
+        String[] exression = null;
+        int variableNumber = 0;
+        int stepNumber = 0;
+        int allStepNumber = 3;
+        for (String operator : condition) {
+            if (!checkForNumber(operator)) {
+                exression = new String[allStepNumber];
+                exression[0] = operator;
+                stepNumber++;
+            } else if (stepNumber < 1) {
+                String message = "Проверьте входные данные" + ";\n";
+                System.out.println(message);
+                writeLog(message);
+            } else {
+                variableNumber++;
+                exression[variableNumber] = operator;
+                stepNumber++;
             }
 
-            if(check == 2){
-                check = 0;
-                step = 0;
-                setAct(act);
+            if (stepNumber == allStepNumber) {
+                stepNumber = 0;
+                variableNumber = 0;
+                weCalculate(exression);
             }
         }
     }
 
-    private static boolean checkString(String string) {
-        try{
+    private static boolean checkForNumber(String string) {
+        try {
             Double.parseDouble(string);
             return true;
-        }catch (Exception e)
-        {
-            return  false;
+        } catch (Exception e) {
+            return false;
         }
     }
 
-    private static void setAct(String[] messages){
-        if(messages != null) {
-            String strLog;
-            for (String message : messages) {
-                switch (message) {
-                    case "add":
-                        strLog = result(addition(messages[1], messages[2]));
-                        log(message,messages[1],messages[2],strLog);
-                        break;
-                    case "sub":
-                        strLog = result(subtraction(messages[1], messages[2]));
-                        log(message,messages[1],messages[2],strLog);
-                        break;
-                    case "div":
-                        strLog = result(division(messages[1], messages[2]));
-                        log(message,messages[1],messages[2],strLog);
-                        break;
-                }
+    private static void weCalculate(String[] exression) {
+        if (exression != null) {
+            String result;
+            String operator = exression[0];
+            String messageFerst = exression[1];
+            String messageSecond = exression[2];
+            switch (operator) {
+                case "add":
+                    result = getValue(concoct(messageFerst, messageSecond));
+                    writeLog(messageFerst, operator, messageSecond, "= " + result + ";\n");
+                    return;
+                case "sub":
+                    result = getValue(subtract(messageFerst, messageSecond));
+                    writeLog(messageFerst, operator, messageSecond, "= " + result + ";\n");
+                    return;
+                case "div":
+                    result = getValue(strip(messageFerst, messageSecond));
+                    writeLog(messageFerst, operator, messageSecond, "= " + result + ";\n");
+                    return;
             }
+
         }
     }
 
-    private static double addition(String messageFerst, String messageSecond){
-        return Сalculator.addition(Double.parseDouble(messageFerst),Double.parseDouble(messageSecond));
+    private static double concoct(String messageFerst, String messageSecond) {
+        return Сalculator.addition(Double.parseDouble(messageFerst), Double.parseDouble(messageSecond));
     }
 
-    private static double subtraction(String messageFerst, String messageSecond){
-        return Сalculator.subtraction(Double.parseDouble(messageFerst),Double.parseDouble(messageSecond));
+    private static double subtract(String messageFerst, String messageSecond) {
+        return Сalculator.subtraction(Double.parseDouble(messageFerst), Double.parseDouble(messageSecond));
     }
 
-    private static double division(String messageFerst, String messageSecond){
-        return Сalculator.division(Double.parseDouble(messageFerst),Double.parseDouble(messageSecond));
+    private static double strip(String messageFerst, String messageSecond) {
+        return Сalculator.division(Double.parseDouble(messageFerst), Double.parseDouble(messageSecond));
     }
 
-    private static String result(double number){
+    private static String getValue(double number) {
         System.out.println(number);
         return Double.toString(number);
     }
 
-    private static String[] arrLog = new String[0];
+    private static String stringLog = "";
 
-    private static void log(String command, String messageFerst,String messageSecond, String result){
-        int length = arrLog.length;
-        String[] temporaryArrLog = addArr(new String[length+1]);
-        temporaryArrLog[temporaryArrLog.length -1]= messageFerst + " " + command + " " + messageSecond + " = " + result;
-        arrLog = temporaryArrLog;
+    private static void writeLog(String... messages) {
+        StringBuilder bulder = new StringBuilder();
+        for (int i = 0; i < messages.length; i++) {
+            bulder.append(messages[i] + " ");
+        }
+        stringLog += bulder.toString();
     }
 
-    private static String[] addArr(String[] arr){
-        for(int i = 0; i < (arr.length -1);i++){
-            arr[i]=arrLog[i];
-        }
-        return arr;
-    }
-
-    private static void getLog(){
-        for (String message:arrLog) {
-            System.out.println(message);
-        }
+    private static void getLog() {
+        System.out.println(stringLog);
     }
 }
