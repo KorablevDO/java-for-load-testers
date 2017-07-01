@@ -3,8 +3,6 @@
  */
 package com.acme.edu;
 
-import com.acme.edu.Calculator.LaunchCalculator;
-
 /**
  * Hello world!
  */

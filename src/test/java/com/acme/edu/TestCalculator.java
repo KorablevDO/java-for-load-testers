@@ -1,7 +1,7 @@
 package com.acme.edu;
 
-import com.acme.edu.Calculator.Calculator;
-import com.acme.edu.Calculator.LaunchCalculator;
+import com.acme.edu.calculator.Calculator;
+import com.acme.edu.calculator.LaunchCalculator;
 
 /**
  * Tests

@@ -1,4 +1,4 @@
-package com.acme.edu.Calculator;
+package com.acme.edu.calculator;
 
 /**
  *
